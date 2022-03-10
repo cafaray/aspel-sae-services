@@ -1,0 +1,37 @@
+
+GET http://localhost:3000/clientes HTTP/1.1
+
+### GET BY ID
+GET http://localhost:3000/clientes/0438 HTTP/1.1
+
+### GET BY RFC
+GET http://localhost:3000/clientes?rfc=APS021207UZ3 HTTP/1.1
+
+###
+GET http://localhost:3000/compras HTTP/1.1
+
+###
+GET http://localhost:3000/compras?from=2017-11-21 HTTP/1.1
+
+###
+GET http://localhost:3000/compras?from=2017-11-21&to=2021-12-31 HTTP/1.1
+
+###
+GET http://localhost:3000/compras/details?from=2017-11-21&to=2021-12-31 HTTP/1.1
+
+
+###
+GET http://localhost:3000/conceptos HTTP/1.1
+
+###
+GET http://localhost:3000/conceptos/70 HTTP/1.1
+
+
+
+###
+POST http://localhost:3000/polizas/auxiliares HTTP/1.1
+content-type: application/json
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}

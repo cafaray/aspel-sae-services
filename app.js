@@ -5,6 +5,28 @@ const AutoLoad = require('fastify-autoload')
 
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
+    // This parses a body to JSON object
+    /*
+    fastify.addContentTypeParser('application/json', { parseAs: 'string' }, function (req, body, done) {
+      try {
+        console.log(`***** here in app.js body comes with\nbody: ${body}`)
+        body = JSON.parse(body)        
+        console.log(`provider: ${body.providerId}`)
+        /*
+        var newBody = {
+          raw: body,
+          parsed: JSON.parse(body),
+        };
+        * /
+        done(null, body);
+      } catch (error) {
+        error.statusCode = 400;
+        done(error, undefined);
+      }
+    })
+  */
+  
+  
 
   // Do not touch the following lines
 

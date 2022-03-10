@@ -26,11 +26,13 @@
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.3.1",
     "fastify-cli": "^2.13.0",
+    "fastify-config-loader": "^1.1.2",
     "fastify-plugin": "^3.0.0",
     "fastify-sensible": "^3.1.0",
     "node-firebird": "^1.0.0"
   },
   "devDependencies": {
+    "nodemon": "^2.0.15",
     "tap": "^15.0.9"
   }
 }
