@@ -73,8 +73,8 @@ FROM ${PAGOS} p INNER JOIN ${CONCEPTOS} c ON p.NUM_CPTO = c.NUM_CPTO
 WHERE trim(p.CVE_PROV) = ? AND p.NUM_CPTO NOT IN(1,2,7,9,12,19,20,28) ORDER BY p.FECHA_APLI`
 
 const SQL_UPDATE_AFECT_COI = `UPDATE ${PAGOS} SET AFEC_COI = 'A' 
-WHERE trim(CVE_PROV) = ? AND trim(REFER) = ? AND NUM_CARGO = ? AND NUM_CPTO = ?
-RETURNING CVE_PROV, REFER, NUM_CARGO, NUM_CPTO`
+WHERE trim(CVE_PROV) = ? AND trim(REFER) = ? AND NUM_CARGO = ? AND NUM_CPTO = ?`
+//RETURNING CVE_PROV, REFER, NUM_CARGO, NUM_CPTO
 
 const message = `Error getting data.\n===>Error querying at pagos:\n`
 
@@ -176,10 +176,11 @@ async function setUpgradeCOI(idProvider, reference, idCharge, idConcept, cb) {
             if(err){
                 console.log(`${message}${err}`)
                 setImmediate(() => cb(err))
-            }            
-            if (data.REFER) {
-                data = JSON.stringify(data)
+            }       
+            console.log('data after update:', data)     
+            if (data) {
                 console.log(`upgraded data: ${data}`)
+                data = {'status':'ok', 'message': `Updated ${reference}`}
                 dbInstance.detach()
                 setImmediate(() => cb(null, data))
             } else {
